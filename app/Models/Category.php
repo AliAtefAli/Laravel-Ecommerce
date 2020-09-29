@@ -10,13 +10,7 @@ class Category extends Model implements TranslatableContract
     protected $table = 'category';
     use Translatable;
     public $translatedAttributes = ['name', 'description'];
-    protected $guarded = ['_token'];
-
-
-    public function SubCategory()
-    {
-        return $this->hasMany('App\Models\SubCategory', 'category_id');
-    }
+    protected $fillable = ['image'];
 
     public function products()
     {

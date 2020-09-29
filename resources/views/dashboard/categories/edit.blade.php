@@ -3,6 +3,10 @@
 @section('css')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
+    <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->
+    <link rel="stylesheet" href="{{ asset("assets/css/file-upload/jquery.fileupload.css") }}">
+    <link rel="stylesheet" href="{{ asset("assets/css/file-upload/jquery.fileupload.ui.css") }}">
+
 
 @endsection
 
@@ -12,7 +16,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="page-header-left">
-                        <h3>Sub Category
+                        <h3>Edit Category
                             <small>Multikart Admin panel</small>
                         </h3>
                     </div>
@@ -43,41 +47,54 @@
                                 <p>{{ $error }}</p>
                             @endforeach
                         @endif
-                        <form class="needs-validation" action="{{route('categories.update', $category)}}" method="POST">
-                                <div class="form">
-                                    @csrf
-                                    @method('PUT')
+                        <form class="needs-validation" action="{{route('category.update', $category)}}" method="POST" enctype="multipart/form-data">
+                            <div class="form">
+                                @csrf
+                                @method('PUT')
+                                @foreach(config("app.languages") as $key => $language)
                                     <div class="form-group">
-                                        <label for="validationCustom01" class="mb-1">Category Name in Arabic:</label>
-                                        <input class="form-control" id="validationCustom01" type="text" value="{{
-                                        $category->translate('ar')->name}}"
-                                               name="ar[name]">
+                                        <label for="validationCustom01" class="mb-1">Category Name in {{$language}}
+                                            :</label>
+                                        <input class="form-control @error("$key.name") is-invalid @enderror"
+                                               id="validationCustom01" type="text"
+                                               name="{{$key}}[name]" value="{{
+                                        $category->translate($key)->name}}" autofocus>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="validationCustom01" class="mb-1">Category Name in English :</label>
-                                        <input class="form-control" id="validationCustom01" autofocus value="{{
-                                        $category->translate('en')->name}}" type="text"
-                                               name="en[name]">
-                                    </div>
+                                    @error("$key.name")
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                @endforeach
 
+                                @foreach(config("app.languages") as $key => $language)
                                     <div class="form-group">
-                                        <label for="validationCustom01" class="mb-1">Description in Arabic:</label>
-                                        <input class="form-control" id="validationCustom01" type="text" value="{{
-                                        $category->translate('ar')->description}}"
-                                               name="ar[description]">
+                                        <label for="validationCustom01" class="mb-1">Category Name in {{$language}}
+                                            :</label>
+                                        <input class="form-control @error("$key.description") is-invalid @enderror"
+                                               id="validationCustom01" type="text"
+                                               name="{{$key}}[description]" value="{{
+                                        $category->translate($key)->description}}">
                                     </div>
-                                    <div class="form-group">
-                                        <label for="validationCustom01" class="mb-1">Description in English:</label>
-                                        <input class="form-control" id="validationCustom01" type="text" value="{{
-                                        $category->translate('en')->description}}"
-                                               name="en[description]">
-                                    </div>
+                                    @error("$key.description")
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                @endforeach
 
-                                    <div class="modal-footer">
-                                        <input class="btn btn-primary" type="submit" value="Save">
-                                    </div>
+
+                                <span class="btn btn-theme04 delete my-3  fileinput-button">
+                                    <i class="fa fa-photo"></i>
+                                    <span> {{ trans('dashboard.Image')}} </span>
+                                  <input type="file" name="image">
+                                </span>
+                                @if($errors->has('image'))
+                                    <div class="alert alert-danger ">{{ $errors->first('image')}}</div>
+                                @endif
+
+
+                                <div class="modal-footer">
+                                    <input class="btn btn-primary" type="submit" value="Save">
                                 </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

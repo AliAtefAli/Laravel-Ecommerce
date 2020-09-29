@@ -1,9 +1,10 @@
-
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('style')
     <!-- Datepicker css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/date-picker.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
 
 @endsection
 
@@ -23,7 +24,7 @@
                 <div class="col-lg-6">
                     <ol class="breadcrumb pull-right">
                         <li class="breadcrumb-item"><a href="index.html"><i data-feather="home"></i></a></li>
-                        <li class="breadcrumb-item">Coupons </li>
+                        <li class="breadcrumb-item">Coupons</li>
                         <li class="breadcrumb-item active">Create Coupon</li>
                     </ol>
                 </div>
@@ -39,109 +40,87 @@
                 <h5>Discount Coupon Details</h5>
             </div>
             <div class="card-body">
-                <ul class="nav nav-tabs tab-coupon" id="myTab" role="tablist">
-                    <li class="nav-item"><a class="nav-link active show" id="general-tab" data-toggle="tab" href="#general" role="tab" aria-controls="general" aria-selected="true" data-original-title="" title="">General</a></li>
-                    <li class="nav-item"><a class="nav-link" id="restriction-tabs" data-toggle="tab" href="#restriction" role="tab" aria-controls="restriction" aria-selected="false" data-original-title="" title="">Restriction</a></li>
-                    <li class="nav-item"><a class="nav-link" id="usage-tab" data-toggle="tab" href="#usage" role="tab" aria-controls="usage" aria-selected="false" data-original-title="" title="">Usage</a></li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade active show" id="general" role="tabpanel" aria-labelledby="general-tab">
-                        <form class="needs-validation" novalidate="">
-                            <h4>General</h4>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="form-group row">
-                                        <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span> Coupan Title</label>
-                                        <input class="form-control col-md-7" id="validationCustom0" type="text" required="">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Coupan Code</label>
-                                        <input class="form-control col-md-7" id="validationCustom1" type="text" required="" >
-                                        <div class="valid-feedback">Please Provide a Valid Coupon Code.</div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">Start Date</label>
-                                        <input class="datepicker-here form-control digits col-md-7" type="text" data-language="en">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">End Date</label>
-                                        <input class="datepicker-here form-control digits col-md-7" type="text" data-language="en">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">Free Shipping</label>
-                                        <div class="checkbox checkbox-primary col-md-7">
-                                            <input id="checkbox-primary-1" type="checkbox" data-original-title="" title="">
-                                            <label for="checkbox-primary-1">Allow Free Shipping</label>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">Quantity</label>
-                                        <input class="form-control col-md-7" type="number" required="">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">Discount Type</label>
-                                        <select class="custom-select col-md-7" required="">
-                                            <option value="">--Select--</option>
-                                            <option value="1">Percent</option>
-                                            <option value="2">Fixed</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-md-4">Status</label>
-                                        <div class="checkbox checkbox-primary col-md-7">
-                                            <input id="checkbox-primary-2" type="checkbox" data-original-title="" title="">
-                                            <label for="checkbox-primary-2">Enable the Coupon</label>
-                                        </div>
+                <form action="{{route('coupon.store')}} " method="POST">
+                    @csrf
+                    <div class="tab-content" id="myTabContent">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group row">
+                                    <label for="validationCustom0" class="col-xl-3 col-md-4"><span>*</span>
+                                        Coupon Title</label>
+                                    <input name="title" class="form-control col-md-7" id="validationCustom0" type="text"
+                                           required="">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="validationCustom1" class="col-xl-3 col-md-4"><span>*</span>Coupon
+                                        Code</label>
+                                    <input name="code" class="form-control col-md-7" id="validationCustom1" type="text"
+                                           required="">
+                                    <div class="valid-feedback">Please Provide a Valid Coupon Code.</div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-md-4">Product</label>
+                                    <select name="product_id" class="custom-select col-md-7" required="">
+                                        @foreach($products as $product)
+                                            <option value="{{ $product->id }}">{{ $product->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="validationCustom9" class="col-xl-3 col-md-4">Amount</label>
+                                    <input name="amount" class="form-control col-md-7" id="validationCustom9" type="text"
+                                           required="">
+                                    <div class="valid-feedback">Please Provide a Valid Coupon Code.</div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-md-4">Start Date</label>
+                                    <input name="start_date" id="start_date"
+                                           class="datepicker-here form-control digits col-md-7" type="text"
+                                           data-language="en">
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-md-4">End Date</label>
+                                    <input name="end_date" id="end_date"
+                                           class="datepicker-here form-control digits col-md-7" type="text"
+                                           data-language="en">
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-md-4">Discount Type</label>
+                                    <select name="discount_type" class="custom-select col-md-7" required="">
+                                        <option value="">--Select--</option>
+                                        <option value="1">Percent</option>
+                                        <option value="2">Fixed</option>
+                                        <option value="3">Free Shipping</option>
+                                    </select>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-xl-3 col-md-4">Status</label>
+                                    <div class="checkbox checkbox-primary col-md-7">
+                                        <input name="status" id="checkbox-primary-2" type="checkbox"
+                                               data-original-title=""
+                                               title="">
+                                        <label for="checkbox-primary-2">Enable the Coupon</label>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <label for="validationCustom4" class="col-xl-3 col-md-4">Minimum Spend</label>
+                                    <input name="min_spend" class="form-control col-md-7" id="validationCustom4"
+                                           type="number">
+                                </div>
+                                <div class="form-group row">
+                                    <label for="validationCustom5" class="col-xl-3 col-md-4">Maximum Spend</label>
+                                    <input name="max_spend" class="form-control col-md-7" id="validationCustom5"
+                                           type="number">
+                                </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
-                    <div class="tab-pane fade" id="restriction" role="tabpanel" aria-labelledby="restriction-tabs">
-                        <form class="needs-validation" novalidate="">
-                            <h4>Restriction</h4>
-                            <div class="form-group row">
-                                <label for="validationCustom3" class="col-xl-3 col-md-4">Products</label>
-                                <input class="form-control col-md-7" id="validationCustom3" type="text" required="" >
-                                <div class="valid-feedback">Please Provide a Product Name.</div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-xl-3 col-md-4">Category</label>
-                                <select class="custom-select col-md-7" required="">
-                                    <option value="">--Select--</option>
-                                    <option value="1">Electronics</option>
-                                    <option value="2">Clothes</option>
-                                    <option value="2">Shoes</option>
-                                    <option value="2">Digital</option>
-                                </select>
-                            </div>
-                            <div class="form-group row">
-                                <label for="validationCustom4" class="col-xl-3 col-md-4">Minimum Spend</label>
-                                <input class="form-control col-md-7" id="validationCustom4" type="number" >
-                            </div>
-                            <div class="form-group row">
-                                <label for="validationCustom5" class="col-xl-3 col-md-4">Maximum Spend</label>
-                                <input class="form-control col-md-7" id="validationCustom5" type="number" >
-                            </div>
-                        </form>
+
+                    <div class="pull-right">
+                        <input type="submit" value="Save">
                     </div>
-                    <div class="tab-pane fade" id="usage" role="tabpanel" aria-labelledby="usage-tab">
-                        <form class="needs-validation" novalidate="">
-                            <h4>Usage Limits</h4>
-                            <div class="form-group row">
-                                <label for="validationCustom6" class="col-xl-3 col-md-4">Per Limit</label>
-                                <input class="form-control col-md-7" id="validationCustom6" type="number" >
-                            </div>
-                            <div class="form-group row">
-                                <label for="validationCustom7" class="col-xl-3 col-md-4">Per Customer</label>
-                                <input class="form-control col-md-7" id="validationCustom7" type="number" >
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="pull-right">
-                    <button type="button" class="btn btn-primary">Save</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -150,10 +129,14 @@
 
 
 @section('js')
-    <!-- Jsgrid js-->
-    <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
-    <script src="{{ asset('assets/js/jsgrid/griddata-transactions.js') }}"></script>
-    <script src="{{ asset('assets/js/jsgrid/jsgrid-transactions.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script>
+
+        flatpickr("#start_date");
+        flatpickr("#end_date");
+
+    </script>
 
 @endsection
 

@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('style')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
 
@@ -37,7 +37,7 @@
                             <div class="card-header">
                                 <h5>Products Category</h5>
                                 <div class="btn-popup pull-right">
-                                    <a href="{{ route('categories.create') }}" class="btn btn-primary">Add Sub Category</a>
+                                    <a href="{{ route('category.create') }}" class="btn btn-primary">Add Category</a>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -61,12 +61,15 @@
                                                 @foreach($categories as $category)
                                                     <tr class="jsgrid-row" style="">
                                                         <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">
-                                                            <img src="../assets/images/dashboard/product/1.jpg" class="blur-up lazyloaded" style="height: 50px; width: 50px;">
+                                                            <img src="{{ public_path('assets/'. $category->image) }}"
+                                                                 class="blur-up
+                                                            lazyloaded"
+                                                                 style="height: 50px; width: 50px;">
                                                         </td>
-                                                        <td class="jsgrid-cell" style="width: 100px;">{{ $category->name }}</td>
+                                                        <td class="jsgrid-cell" style="width: 100px;">{{$category->name }}</td>
                                                         <td class="jsgrid-cell" style="width: 50px;">{{ $category->description }}</td>
                                                         <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                            <a href="{{ route('categories.edit', $category) }}"
+                                                            <a href="{{ route('category.edit', $category) }}"
                                                                class="jsgrid-button jsgrid-edit-button"
                                                                type="button"></a>
                                                             <a class="jsgrid-button jsgrid-delete-button" data-toggle="modal"
@@ -84,7 +87,8 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <form class="needs-validation"
-                                                                                  action="{{route('categories.destroy', $category) }}"
+                                                                                  action="{{route('category.destroy',
+                                                                                   $category) }}"
                                                                                   method="POST">
                                                                                 @csrf
                                                                                 @method('DELETE')

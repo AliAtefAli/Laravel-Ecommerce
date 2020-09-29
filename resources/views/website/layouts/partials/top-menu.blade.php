@@ -14,19 +14,9 @@
                         <li>
                             <a href="#">new demos <span class="new-tag">new</span></a>
                             <ul>
+
                                 <li><a target="_blank" href="tools.html">tools</a></li>
-                                <li><a target="_blank"
-                                       href="marketplace-demo.html">marketplace</a></li>
-                                <li><a target="_blank" href="game.html">game</a></li>
-                                <li><a target="_blank" href="gym-product.html">gym</a></li>
-                                <li><a target="_blank" href="marijuana.html">marijuana</a></li>
-                                <li><a target="_blank" href="left_sidebar-demo.html">left
-                                        sidebar</a></li>
-                                <li><a target="_blank" href="jewellery.html">jewellery</a></li>
-                                <li><a target="_blank" href="pets.html">pets</a></li>
-                                <li><a target="_blank" href="metro.html">metro</a></li>
-                                <li><a target="_blank" href="video-slider.html">video slider</a>
-                                </li>
+
                             </ul>
                         </li>
                         <li>

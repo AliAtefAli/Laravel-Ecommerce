@@ -7,7 +7,7 @@
                 <a href="#">
                     <div class="collection-banner p-right text-center">
                         <div class="img-part">
-                            <img src="../assets/images/sub-banner1.jpg" class="img-fluid blur-up lazyload bg-img"
+                            <img src="{{ asset('assets/images/slider/men.jpg') }}" class="img-fluid blur-up lazyload bg-img"
                                  alt="">
                         </div>
                         <div class="contain-banner">
@@ -23,7 +23,8 @@
                 <a href="#">
                     <div class="collection-banner p-right text-center">
                         <div class="img-part">
-                            <img src="../assets/images/sub-banner2.jpg" class="img-fluid blur-up lazyload bg-img"
+                            <img src="{{ asset('assets/images/slider/women.jpg') }}" class="img-fluid blur-up
+                                 lazyload bg-img"
                                  alt="">
                         </div>
                         <div class="contain-banner">

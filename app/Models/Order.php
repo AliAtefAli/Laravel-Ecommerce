@@ -8,9 +8,12 @@ class Order extends Model
 {
     protected $table = 'orders';
 
-    public function ordered_products()
+    protected $fillable = ['user_id', 'billing_phone', 'billing_address', 'payment_method', 'payment_status', 'product_id', 'order_status'];
+
+
+    public function products()
     {
-        return $this->hasMany('App\Models\Ordered_products');
+        return $this->belongsToMany('App\Models\Product');
     }
-    
+
 }

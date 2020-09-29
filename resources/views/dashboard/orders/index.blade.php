@@ -1,7 +1,7 @@
 
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('style')
     <!-- Datatables css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
 @endsection

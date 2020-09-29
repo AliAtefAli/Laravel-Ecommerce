@@ -110,13 +110,14 @@
 
 
 <!-- cart start -->
+@if(auth()->user())
 <div class="addcart_btm_popup" id="fixed_cart_icon">
-    <a href="#" class="fixed_cart">
+    <a href="{{ route('cart.index') }}" class="fixed_cart">
         <i class="ti-shopping-cart"></i>
     </a>
 </div>
 <!-- cart end -->
-
+@endif
 
 <!-- tap to top -->
 <div class="tap-top top-cls">

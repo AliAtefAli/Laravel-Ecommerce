@@ -21,7 +21,14 @@
                             My Account
                             <ul class="onhover-show-div">
                                 <li><a href="#" data-lng="en">Login</a></li>
-                                <li><a href="#" data-lng="es">Logout</a></li>
+                                <li><a data-lng="en"
+                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit()">{{trans('auth.logout')}} </a>
+                                </li>
+                                <form method="post" action="{{ route("logout") }}"
+                                      id="logout-form">
+                                    @csrf
+                                </form>
+
                             </ul>
                         </li>
                     </ul>

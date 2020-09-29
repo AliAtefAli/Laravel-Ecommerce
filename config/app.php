@@ -80,7 +80,22 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locales' => [
+        'ar',
+        'en',
+    ],
+    /*
+    |--------------------------------------------------------------------------
+    | Application Languages
+    |--------------------------------------------------------------------------
+    */
+
+    'languages' =>[
+        'ar' => 'Arabic',
+        'en' => 'English'
+
+    ],
+
 
     /*
     |--------------------------------------------------------------------------
@@ -226,6 +241,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'Image' => Intervention\Image\Facades\Image::class,
 
     ],
 

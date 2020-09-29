@@ -41,7 +41,7 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin.css') }}">
 
-    @yield('css')
+    @yield('style')
 </head>
 
 <body>

@@ -29,6 +29,13 @@
     </div>
     <!-- Container-fluid Ends-->
 
+    @foreach($products as $product)
+        {{--        <div class="alert">{{ $product->name }}</div>--}}
+        @foreach($product->images() as $image)
+            @dd($image)
+            <div class="alert">{{ $image->path }}</div>
+        @endforeach
+    @endforeach
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row">
@@ -40,40 +47,57 @@
                     <div class="card-body">
                         <div class="btn-popup pull-right">
                             <div class="btn-popup pull-right">
-                                <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+                                <a href="{{ route('products.create') }}" class="btn btn-primary">Add
+                                    Product</a>
                             </div>
                         </div>
                         <div class="table-responsive">
-                            <div id="basicScenario" class="product-physical jsgrid" style="position: relative; height: auto; width: 100%;">
+                            <div id="basicScenario" class="product-physical jsgrid"
+                                 style="position: relative; height: auto; width: 100%;">
                                 <div class="jsgrid-grid-header jsgrid-header-scrollbar">
                                     <table class="jsgrid-table">
                                         <tr class="jsgrid-header-row">
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Image</th>
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 100px;">Name</th>
-                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">Discription</th>
-                                            <th class="jsgrid-header-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">
-                                                <input class="jsgrid-button jsgrid-mode-button jsgrid-insert-mode-button" type="button" title="Switch to inserting">
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Name
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width:
+                                            50px;">Coupon
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Expiration Date
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Price
+                                            </th>
+                                            <th class="jsgrid-header-cell jsgrid-header-sortable" style="width: 50px;">
+                                                Quantity
                                             </th>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="jsgrid-grid-body">
                                     <table class="jsgrid-table">
-{{--                                        <tbody>--}}
-{{--                                        @foreach($Products as $Product)--}}
-{{--                                            <tr class="jsgrid-row" style="">--}}
-{{--                                                <td class="jsgrid-cell jsgrid-align-center" style="width: 50px;">--}}
-{{--                                                    <img src="../assets/images/dashboard/product/1.jpg" class="blur-up lazyloaded" style="height: 50px; width: 50px;">--}}
-{{--                                                </td>--}}
-{{--                                                <td class="jsgrid-cell" style="width: 100px;">{{ $Product->name }}</td>--}}
-{{--                                                <td class="jsgrid-cell" style="width: 50px;">{{ $Product->description }}</td>--}}
-{{--                                                <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center" style="width: 50px;">--}}
-{{--                                                    <input class="jsgrid-button jsgrid-edit-button" type="button" title="Edit">--}}
-{{--                                                    <input class="jsgrid-button jsgrid-delete-button" type="button" title="Delete">--}}
-{{--                                                </td>--}}
-{{--                                            </tr>--}}
-{{--                                        @endforeach--}}
-{{--                                        </tbody>--}}
+                                        <tbody>
+                                        @foreach($products as $product)
+                                            <tr class="jsgrid-row" style="">
+                                                <td class="jsgrid-cell" style="width: 50px;">{{ $product->name }}</td>
+                                                <td class="jsgrid-cell" style="width: 50px;"><i class="fa fa-circle @if($product->coupo_id
+                                                == null ) font-danger @else font-success- @endif  f-12"> </i></td>
+                                                <td class="jsgrid-cell" style="width: 50px;">{{
+                                                Carbon\Carbon::parse( $product->expiration_date )->diffForHumans() }}
+                                                </td>
+                                                <td class="jsgrid-cell" style="width: 50px;">{{ $product->price}}</td>
+                                                <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
+                                                    style="width: 50px;">
+                                                    <a href="{{ route('product.edit', $product) }}" ><input class="jsgrid-button
+                                                    jsgrid-edit-button" type="button" title="Edit"></a>
+                                                    <a href="{{ route('product.destroy', $product) }}" ><input
+                                                            class="jsgrid-button jsgrid-delete-button" type="button"
+                                                            title="Delete"></a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>

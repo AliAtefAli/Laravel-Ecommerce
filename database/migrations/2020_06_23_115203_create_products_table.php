@@ -16,9 +16,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('images');
-            $table->foreignId('seller_id');
             $table->foreignId('category_id');
-            $table->foreignId('sub_category_id')->nullable();
             $table->foreignId('coupon_id')->nullable();
             $table->timestamp('production_date')->nullable();
             $table->timestamp('expiration_date')->nullable();
