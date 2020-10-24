@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\Image;
 use App\Models\Product;
 use App\Models\ProductImages;
 use App\Traits\Uploadable;
@@ -49,10 +50,9 @@ class ProductController extends Controller
 
         foreach ($images as $image_input) {
             $path = $this->uploadOne($image_input, '736', '1000', 'products');
-            ProductImages::create([
-                'path' => $path,
-                'product_id' => $product->id
-            ]);
+
+            $image = new Image(['path' => $path]);
+            $product->images()->save($image);
         }
 
 
@@ -96,19 +96,25 @@ class ProductController extends Controller
         if ($request->has('images')) {
             $images = $request['images'];
 
-            $old_images = ProductImages::where('product_id', $product->id);
-            $old_images->delete();
+            $old_images = Image::where('imageable_id', $product->id)->get();
+            // Delete from the asset
+            foreach ($old_images as $old_image) {
+                if (file_exists(public_path('assets/images/products/' . $old_image->path))) {
+                    unlink(public_path('assets/images/products/' . $old_image->path));
+                }
+                // Delete from database
+                $old_image->delete();
+            }
+            // Put the new images
             foreach ($images as $image_input) {
-                $path = $this->uploadOne($image_input, '736', '1000', 'products');
-                ProductImages::create([
-                    'path' => $path,
-                    'product_id' => $product->id
-                ]);
+                $path = $this->uploadOne($image_input, null, null, 'products');
+
+                $image = new Image(['path' => $path]);
+                $product->images()->save($image);
             }
         }
 
-
-        return redirect()->route('product.index');
+        return redirect()->route('products.index');
 
     }
 
@@ -118,8 +124,18 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $old_images = Image::where('imageable_id', $product->id)->get();
+        // Delete from the asset
+        foreach ($old_images as $old_image) {
+            if (file_exists(public_path('assets/images/products/' . $old_image->path))) {
+                unlink(public_path('assets/images/products/' . $old_image->path));
+            }
+            // Delete from database
+            $old_image->delete();
+        }
+        $product->delete();
+        return back();
     }
 }

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['namespace' => 'Website', 'middleware' => 'localize'], function (){
+Route::group(['namespace' => 'Website', 'middleware' => 'localize'], function () {
     Route::get('language/{lang}', 'LocalizationController')->name('language.switch');
 });
 
@@ -24,30 +24,37 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => ['auth', 'localize']], function() {
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => ['auth', 'localize']], function () {
 
     Route::get('/', 'HomeController@index')->name('dashboard.home');
 
-    Route::resource('category','CategoryController');
+    Route::resource('category', 'CategoryController');
 
-    Route::resource('products','ProductController');
+    Route::resource('products', 'ProductController');
 
     Route::resource('coupon', 'CouponController');
+
     Route::resource('order', 'OrderController');
+
+    Route::get('setting', 'SettingController@show')->name('setting.show');
+
+    Route::put('setting', 'SettingController@update')->name('setting.update');
 });
 
 // Website
-Route::group(['namespace' => 'Website', 'middleware' => ['auth', 'localize']], function() {
+Route::group(['namespace' => 'Website', 'middleware' => ['auth', 'localize']], function () {
+    Route::resource('checkout', 'CheckoutController');
+});
+Route::group(['namespace' => 'Website', 'middleware' => 'localize'], function () {
+
 
     Route::resource('product', 'ProductController');
-
-    Route::resource('checkout', 'CheckoutController');
 
     Route::get('cart', 'CartController@index')->name('cart.index');
 
     Route::get('cart/add/{product}', 'CartController@add')->name('cart.add');
 
-    Route::get('cart/destroy/{cart}', 'CartController@destroy')->name('cart.destroy');
+    Route::get('cart/destroy/{row}', 'CartController@destroy')->name('cart.destroy');
 
 });
 

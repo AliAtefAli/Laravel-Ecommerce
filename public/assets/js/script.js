@@ -57,7 +57,7 @@
     });
 
 
-    /*=====================  
+    /*=====================
      02.Tap on Top
      ==========================*/
     $(window).on('scroll', function() {
@@ -1256,16 +1256,16 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").classList.remove('open-side');
 }
-$(function() {
-    $('#main-menu').smartmenus({
-        subMenusSubOffsetX: 1,
-        subMenusSubOffsetY: -8
-    });
-    $('#sub-menu').smartmenus({
-        subMenusSubOffsetX: 1,
-        subMenusSubOffsetY: -8
-    });
-});
+// $(function() {
+//     $('#main-menu').smartmenus({
+//         subMenusSubOffsetX: 1,
+//         subMenusSubOffsetY: -8
+//     });
+//     $('#sub-menu').smartmenus({
+//         subMenusSubOffsetX: 1,
+//         subMenusSubOffsetY: -8
+//     });
+// });
 
 
 /*=====================

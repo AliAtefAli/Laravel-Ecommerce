@@ -14,6 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+
     protected $websiteNamespace = 'App\Http\Controllers';
 
     protected $dashboardNamespace = 'App\Http\Controllers';
@@ -23,7 +24,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/home';
+    public const HOME = '/';
 
     /**
      * Define your route model bindings, pattern filters, etc.

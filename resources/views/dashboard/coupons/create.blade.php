@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('style')
+@section('page-css')
     <!-- Datepicker css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/date-picker.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">

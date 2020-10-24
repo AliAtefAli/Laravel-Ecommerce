@@ -2,7 +2,7 @@
 @section('title')
     {{ trans("dashboard.Category") }}
 @endsection
-@section('css')
+@section('page-css')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
     <!-- Dropzone css-->
@@ -94,8 +94,6 @@
                                 </div>
                             </div>
                         </form>
-
-
                     </div>
                 </div>
             </div>

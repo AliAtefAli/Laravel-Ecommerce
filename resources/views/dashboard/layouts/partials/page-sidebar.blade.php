@@ -14,7 +14,7 @@
             <p>general manager.</p>
         </div>
         <ul class="sidebar-menu">
-            <li class="active"><a class="sidebar-header active" href="{{ route('dashboard.home') }}">
+            <li class="active"><a class="sidebar-header active" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                          class="feather feather-home">
@@ -53,8 +53,8 @@
                     </svg>
                     <span>Category</span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
-                    <li><a href="{{route('category.index')}}"><i class="fa fa-circle"></i>Category</a></li>
-                    <li><a href="{{route('category.create')}}"><i class="fa fa-circle"></i>Create Category</a></li>
+                    <li><a href="#"><i class="fa fa-circle"></i>Category</a></li>
+                    <li><a href="#"><i class="fa fa-circle"></i>Create Category</a></li>
                 </ul>
             </li>
             <li><a class="sidebar-header" href="">
@@ -66,11 +66,11 @@
                     </svg>
                     <span>Coupons</span><i class="fa fa-angle-right pull-right"></i></a>
                 <ul class="sidebar-submenu">
-                    <li><a href="{{ route('coupon.index') }}"><i class="fa fa-circle"></i>List Coupons</a></li>
-                    <li><a href="{{ route('coupon.create')}}"><i class="fa fa-circle"></i>Create Coupons </a></li>
+                    <li><a href="#"><i class="fa fa-circle"></i>List Coupons</a></li>
+                    <li><a href="#"><i class="fa fa-circle"></i>Create Coupons </a></li>
                 </ul>
             </li>
-            <li><a class="sidebar-header" href="{{route('order.index')}}">
+            <li><a class="sidebar-header" href="{{ route('order.index') }}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24"
                          height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2"
@@ -102,19 +102,8 @@
             </li>
 
 
-            <li><a class="sidebar-header" href="">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                         stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                         class="feather feather-settings">
-                        <circle cx="12" cy="12" r="3"></circle>
-                        <path
-                            d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-                    </svg>
-                    <span>Settings</span><i class="fa fa-angle-right pull-right"></i></a>
-                <ul class="sidebar-submenu">
-                    <li><a href="profile.html"><i class="fa fa-circle"></i>Update Profile</a></li>
-                </ul>
-            </li>
+            <li><a class="sidebar-header" href="{{ route('setting.show') }}">Settings</a></li>
+
             <li><a class="sidebar-header" href="invoice.html">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers\Website;
 
+use App\Events\NotificationEvent;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCartRequest;
+use App\Http\Requests\StoreCheckoutRequest;
 use App\Models\Order;
 use App\Models\Ordered_products;
 use App\Models\Product;
+use App\Models\User;
+use App\Notifications\NewOrderNotification;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
 class CheckoutController extends Controller
@@ -16,18 +21,20 @@ class CheckoutController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Product $product)
+    public function index()
     {
-        $user = auth()->user();
-        $carts = Order::where('user_id', $user->id)->get();
 
-        $total = 0;
-        foreach ($carts as $cart){
-            dd($cart->products);
-            $total += $cart->products->first()->price;
-        }
+        return view('website.cart.checkout');
+//        $user = auth()->user();
+//        $carts = Order::where('user_id', $user->id)->get();
+//
+//        $total = 0;
+//        foreach ($carts as $cart){
+//            dd($cart->products);
+//            $total += $cart->products->first()->price;
+//        }
 
-        return view('website.cart.index', compact('carts', 'total'));
+//        return view('website.cart.index', compact('carts', 'total'));
 
     }
 
@@ -38,10 +45,11 @@ class CheckoutController extends Controller
      */
     public function create(Request $request)
     {
+
         $user = auth()->user();
         $carts = Order::where('user_id', $user->id)->get();
 
-        foreach ($carts as $cart){
+        foreach ($carts as $cart) {
             $carts['quantity'] = $request[$cart->id . '_quantity'];
         }
         return view('website.cart.checkout', compact('carts'));
@@ -51,76 +59,49 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCheckoutRequest $request)
     {
-        // dd($request->all());
-//        $user = auth()->user();
-//        $orders = Order::where('user_id', $user->id)->get();
-//        return view('website.cart.checkout', compact('orders'));
-
-        $user = auth()->user();
-        $carts = Order::where('user_id', $user->id)->get();
-
-        $total = 0;
-        foreach ($carts as $cart){
-             $total += $cart->products->first()->price * $request[$cart->id . '_quantity'];
-
-            Ordered_products::create([
-                'order_id' => $cart->id,
-                'product_id' => $cart->products->first()->id,
-                'quantity' => $quantity =  $request[$cart->id . '_quantity'],
-                'total' => $cart->products->first()->price * $quantity
-            ]);
+        if (!isset(auth()->user()->address)) {
+            $user = User::find(auth()->user()->id);
+            $user->address = $request->address;
+            $user->save();
+        }
+        if (!isset(auth()->user()->phone)) {
+            $user = User::find(auth()->user()->id);
+            $user->phone = $request->phone;
+            $user->save();
         }
 
-         return view();
+        foreach (Cart::content() as $cart) {
+            $order = Order::create([
+                'user_id' => auth()->user()->id,
+                'billing_phone' => $request->phone,
+                'billing_address' => $request->address,
+                'product_id' => $cart->id,
+            ]);
+
+            $admin = User::where('role', 'admin')->first();
+            $admin->notify(new NewOrderNotification($order));
+
+            $this->make_event($order, $cart->total);
+
+            $order->products()->attach($order->id, ['quantity' => $cart->qty, 'total' => $cart->total]);
+            Cart::remove($cart->rowId);
+        }
+
+        return redirect()->route('product.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    protected function make_event($order, $total)
     {
-        //
+        $data = [
+            'order' => $order,
+            'total' => $total
+        ];
+        event(new NotificationEvent($data));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

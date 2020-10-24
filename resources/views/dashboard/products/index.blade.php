@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('page-css')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
 
@@ -80,7 +80,9 @@
                                         <tbody>
                                         @foreach($products as $product)
                                             <tr class="jsgrid-row" style="">
-                                                <td class="jsgrid-cell" style="width: 50px;">{{ $product->name }}</td>
+                                                <td class="jsgrid-cell" style="width: 50px;"><a title="Show"
+                                                        href="{{ route('products.show', $product) }}">{{ $product->name }}</a>
+                                                </td>
                                                 <td class="jsgrid-cell" style="width: 50px;"><i class="fa fa-circle @if($product->coupo_id
                                                 == null ) font-danger @else font-success- @endif  f-12"> </i></td>
                                                 <td class="jsgrid-cell" style="width: 50px;">{{
@@ -89,11 +91,14 @@
                                                 <td class="jsgrid-cell" style="width: 50px;">{{ $product->price}}</td>
                                                 <td class="jsgrid-cell jsgrid-control-field jsgrid-align-center"
                                                     style="width: 50px;">
-                                                    <a href="{{ route('product.edit', $product) }}" ><input class="jsgrid-button
+                                                    <a href="{{ route('products.edit', $product) }}"><input class="jsgrid-button
                                                     jsgrid-edit-button" type="button" title="Edit"></a>
-                                                    <a href="{{ route('product.destroy', $product) }}" ><input
-                                                            class="jsgrid-button jsgrid-delete-button" type="button"
-                                                            title="Delete"></a>
+
+                                                    <form action="{{ route('products.destroy', $product) }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button>Delete</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         @endforeach

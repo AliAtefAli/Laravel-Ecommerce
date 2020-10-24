@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('page-css')
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 @endsection
 
@@ -44,7 +44,7 @@
                             @endforeach
                         @endif
                         <form class="needs-validation add-product-form"
-                              action="{{ route('product.update', $product) }}"
+                              action="{{ route('products.update', $product) }}"
                               method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -65,7 +65,7 @@
                                     <div class="form-group row">
                                         <label class="col-xl-3 col-sm-4">Description in Arabic :</label>
                                         <div class="col-xl-8 col-sm-7 pl-0 description-sm">
-                                                    <textarea id="editor1" name="ar[description]" cols="10"
+                                                    <textarea id="editor3" name="ar[description]" cols="10"
                                                               rows="4">value="{{
                                                    $product->translate('ar')->description }}"</textarea>
                                         </div>

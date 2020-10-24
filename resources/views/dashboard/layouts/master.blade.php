@@ -41,7 +41,7 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/admin.css') }}">
 
-    @yield('style')
+    @yield('page-css')
 </head>
 
 <body>
@@ -143,8 +143,49 @@
     });
 
 </script>
+<script>
+    $('.logo').change(function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
 
-@yield('js')
+            reader.onload = function(e) {
+                console.log('hello');
+                $('.logo-preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]); // convert to base64 string
+        }
+    });
+
+    $('.icon').change(function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                console.log('hello');
+                $('.icon-preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]); // convert to base64 string
+        }
+    });
+
+    $('.slider').change(function() {
+        if (this.files && this.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                console.log('hello');
+                $('.slider-preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(this.files[0]); // convert to base64 string
+        }
+    });
+
+</script>
+
+@yield('script')
 
 </body>
 </html>

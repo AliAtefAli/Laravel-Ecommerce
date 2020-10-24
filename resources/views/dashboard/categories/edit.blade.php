@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('page-css')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
     <!-- CSS to style the file input field as button and adjust the Bootstrap progress bars -->

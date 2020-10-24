@@ -10,7 +10,7 @@
     <meta name="author" content="multikart">
     <link rel="icon" href="{{ asset('assets/images/favicon/1.png') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon/1.png') }}" type="image/x-icon">
-    <title>Multikart - Multi-purpopse E-commerce Html Template</title>
+    <title>@yield('title', 'Home')</title>
 
     <!--Google font-->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -34,6 +34,7 @@
     <!-- Theme css -->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/color1.css') }}" media="screen" id="color">
 
+    @stack('page-css')
 </head>
 
 @include('website.layouts.partials.header')
@@ -110,14 +111,14 @@
 
 
 <!-- cart start -->
-@if(auth()->user())
+
 <div class="addcart_btm_popup" id="fixed_cart_icon">
     <a href="{{ route('cart.index') }}" class="fixed_cart">
         <i class="ti-shopping-cart"></i>
     </a>
 </div>
 <!-- cart end -->
-@endif
+
 
 <!-- tap to top -->
 <div class="tap-top top-cls">
@@ -176,6 +177,9 @@
         document.getElementById("search-overlay").style.display = "none";
     }
 </script>
+
+ @stack('js')
+
 
 </body>
 

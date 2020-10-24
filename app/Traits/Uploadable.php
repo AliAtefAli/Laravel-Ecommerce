@@ -7,36 +7,26 @@ use Intervention\Image\Facades\Image;
 use Ramsey\Uuid\Uuid;
 
 
-trait Uploadable {
+trait Uploadable
+{
 
-    public function uploadOne($file, $width, $height, $domain)
+    public function uploadOne($file, $width = null, $height = null, $domain)
     {
-        // $image = Image::make($file)->resize($width, $height);
-        // $path = Uuid::uuid4()->toString() . '.' . $file->getClientOriginalExtension();
-        // $image->save(public_path('assets/' . $path) );
 
-        // return $path;
+        $directory = public_path('assets/images/' . $domain);
+        if (!File::isDirectory($directory)) {
+            File::makeDirectory($directory, 0777, true, true);
+        }
+        if ($width === null && $height == null) {
+            $image = Image::make($file);
+        } else {
+            $image = Image::make($file)->resize($width, $height);
+        }
+        $path = Uuid::uuid4()->toString() . '.' . $file->getClientOriginalExtension();
+        $image->save($directory . '/' . $path);
 
-         $directory = public_path('assets/images/' . $domain);
-         if(!File::isDirectory( $directory)){
-             File::makeDirectory($directory, 0777, true, true);
-         }
-         $image = Image::make($file)->resize($width, $height);
-         $path = Uuid::uuid4()->toString() . '.' . $file->getClientOriginalExtension();
-         $image->save( $directory .  '/' . $path );
+        return $path;
 
-         return $path;
-
-
-//        $directory = public_path('assets/images/' . $domain);
-//        if(!File::isDirectory( $directory)){
-//            File::makeDirectory($directory, 0777, true, true);
-//        }
-//
-//        $image = Image::make($directory . '/' . $file->getClientOriginalName() )->resize($width,
-//            $height);
-//        $path = Uuid::uuid4()->toString() . '.' . $file->getClientOriginalExtension();
-//        $image->save( $directory );
     }
 
 }

@@ -1,7 +1,7 @@
 
 @extends('dashboard.layouts.master')
 
-@section('css')
+@section('page-css')
     <!-- jsgrid css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/jsgrid.css') }}">
 

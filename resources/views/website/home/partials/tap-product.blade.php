@@ -22,9 +22,13 @@
                                 @foreach($products as $product)
 
                                     <div class="product-box product-wrap">
-                                        <div class="img-wrapper">
+                                        <div class="img-block">
 
-                                            <div class="lable-block"><span class="lable3">{{ $product->coupon->title }}</span></div>
+                                            @if(isset($product->coupon->amount))
+                                                <div class="lable-wrapper">{{--<span class="lable1">new</span>--}} <span
+                                                        class="lable2">{{ $product->coupon->amount }}%
+                                        off</span></div>
+                                            @endif
                                             <div class="front">
                                                 <a href="{{ route('product.show', $product) }}">
                                                     <img
@@ -35,33 +39,49 @@
                                                 <a href="{{ route('product.show', $product) }}"><img
                                                         src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
                                                         class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                            </div>        <div class="cart-detail"><a href="#" title="Add to
+                                            </div>
+                                            <div class="cart-detail"><a href="#" title="Add to
                                             Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#" data-toggle="modal" data-target="#quick-view" title="Quick View"><i class="ti-search"
-                                                                                                                                                                                     aria-hidden="true"></i></a> <a href="compare.html" title="Compare"><i
+                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                                                                        data-toggle="modal"
+                                                                                                        data-target="#quick-view"
+                                                                                                        title="Quick View"><i
+                                                        class="ti-search"
+                                                        aria-hidden="true"></i></a> <a href="compare.html"
+                                                                                       title="Compare"><i
                                                         class="ti-reload" aria-hidden="true"></i></a></div>
                                         </div>
                                         <div class="product-info">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i>
                                             </div>
                                             <a href="product-page(no-sidebar).html">
                                                 <h6>{{ $product->name }}</h6>
                                             </a>
-                                            <h4>${{ $product->price }}</h4>
+                                            @if(isset($product->coupon->amount))
+                                                <h4>${{ $product->price * ( (100 - $product->coupon->amount ) / 100 ) }}
+                                                    <del>${{ $product->price }}</del>
+                                                </h4>
+                                            @else
+                                                <h4>${{ $product->price}}</h4>
+                                            @endif
+
                                             <ul class="color-variant">
                                                 <li class="bg-light0"></li>
                                                 <li class="bg-light1"></li>
                                                 <li class="bg-light2"></li>
                                             </ul>
-                                            <div class="add-btn">
+                                            <div class="add-btn addCart">
                                                 <a href="{{ route('cart.add', ['product' => $product])}}" class="btn
-                                                btn-outline">
+                                                btn-outline" >
                                                     <i class="ti-shopping-cart"></i> add to cart
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
+
                             </div>
                         </div>
                         <div class="my-3">
@@ -178,3 +198,51 @@
     </div>
 </section>
 <!-- Tab product end -->
+
+@push('js')
+    <script>
+        $('.addCart').on('click', function() {
+
+            $.notify({
+                icon: 'fa fa-check',
+                title: 'Success!',
+                message: 'Item Successfully added to your cart'
+            }, {
+                element: 'body',
+                position: null,
+                type: "success",
+                allow_dismiss: true,
+                newest_on_top: false,
+                showProgressbar: true,
+                placement: {
+                    from: "top",
+                    align: "right"
+                },
+                offset: 20,
+                spacing: 10,
+                z_index: 1031,
+                delay: 1000,
+                animate: {
+                    enter: 'animated fadeInDown',
+                    exit: 'animated fadeOutUp'
+                },
+                icon_type: 'class',
+                template: '<div data-notify="container" class="col-xs-11 col-sm-3 alert alert-{0}" role="alert">' +
+                    '<button type="button" aria-hidden="true" class="close" data-notify="dismiss">×</button>' +
+                    '<span data-notify="icon"></span> ' +
+                    '<span data-notify="title">{1}</span> ' +
+                    '<span data-notify="message">{2}</span>' +
+                    '<div class="progress" data-notify="progressbar">' +
+                    '<div class="progress-bar progress-bar-{0}" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%;"></div>' +
+                    '</div>' +
+                    '<a href="{3}" target="{4}" data-notify="url"></a>' +
+                    '</div>'
+            });
+        });
+
+        function add_to_cart($id) {
+
+        }
+    </script>
+
+@endpush

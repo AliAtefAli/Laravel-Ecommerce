@@ -60,7 +60,8 @@ class CouponController extends Controller
             'min_spent' => $request->min_spent,
             'max_spent' => $request->max_spent,
         ]);
-        return route('dashboard.home');
+
+        return redirect()->route('dashboard.home');
     }
 
     /**

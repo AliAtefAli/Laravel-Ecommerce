@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\website;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cart;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\User;
@@ -13,33 +13,24 @@ class CartController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
-        $carts = Cart::where('user_id', $user->id)->get();
+        $carts = Cart::content();
 
-        $total = 0;
-        foreach ($carts as $cart){
-
-            $total += $cart->product->price;
-        }
-
-        return view('website.cart.index', compact('carts', 'total'));
+        return view('website.cart.index', compact('carts'));
     }
 
     public function add(Product $product)
     {
-        $user = auth()->user();
-        Cart::create([
-            'user_id' => $user->id,
-            'product_id' => $product->id,
-            'quantity' => 1
-        ]);
+        $cart = Cart::add($product->id, $product->name, 1, $product->price, 0, [], 10);
+
+        Cart::associate($cart->rowId, 'App\Models\Product');
+
 
         return back();
     }
 
-    public function destroy(Cart $cart)
+    public function destroy($row)
     {
-        $cart->delete();
+        Cart::remove($row);
 
         return back();
     }

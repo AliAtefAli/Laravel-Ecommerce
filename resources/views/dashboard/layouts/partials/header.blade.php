@@ -23,31 +23,29 @@
                 </li>
                 <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                             data-feather="maximize-2"></i></a></li>
-                <li class="onhover-dropdown"><a class="txt-dark" href="#">
+                <li class="hover-dropdown"><a class="txt-dark" href="#">
                         <h6 id="langText">EN</h6></a>
-                    <ul class="language-dropdown onhover-show-div p-20">
-                        <li><a href="{{ route('language.switch', ['lang' => 'en']) }}" data-lng="en"><i
-                                    class="flag-icon
-                        flag-icon-is"></i> English</a></li>
-                        <li><a href="{{ route('language.switch', ['lang' => 'ar']) }}" data-lng="en"><i
-                                    class="flag-icon flag-icon-eg"></i> العربية</a></li>
-                    </ul>
+
                 </li>
-                <li class="onhover-dropdown"><i data-feather="bell"></i><span
-                        class="badge badge-pill badge-primary pull-right notification-badge">3</span><span
+                {{--                Notification --}}
+                <li class="onhover-dropdown dropdown-notifications"><i data-feather="bell"></i><span
+                        class="badge badge-pill badge-primary pull-right notification-badge data-count">3</span><span
                         class="dot"></span>
                     <ul class="notification-dropdown onhover-show-div p-0">
-                        <li>Notification <span class="badge badge-pill badge-primary pull-right">3</span></li>
-                        <li>
-                            <div class="media">
-                                <div class="media-body">
-                                    <h6 class="mt-0"><span><i class="shopping-color"
-                                                              data-feather="shopping-bag"></i></span>Your order ready
-                                        for Ship..!</h6>
-                                    <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
+
+                        <li class="scrollable-container bg-light">
+                            <a href="#">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h6 class="mt-0"><span><i class="shopping-color"
+                                                                  data-feather="shopping-bag"></i>
+                                            </span>Your order ready for Ship..!</h6>
+                                        <p class="mb-0">Lorem ipsum dolor sit amet, consectetuer.</p>
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </li>
+
                         <li>
                             <div class="media">
                                 <div class="media-body">
@@ -71,6 +69,7 @@
                         <li class="txt-dark"><a href="#">All</a> notification</li>
                     </ul>
                 </li>
+                {{--                Notification --}}
                 <li><a href="#"><i class="right_side_toggle" data-feather="message-square"></i><span class="dot"></span></a>
                 </li>
                 <li class="onhover-dropdown">

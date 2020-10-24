@@ -26,12 +26,13 @@ class Product extends Model implements TranslatableContract
 
     public function coupon()
     {
-        return $this->belongsTo('App\Models\Product');
+        return $this->hasOne('App\Models\Coupon');
     }
 
     public function images()
     {
-        return $this->hasMany('App\Models\ProductImages');
+//        return $this->hasMany('App\Models\ProductImages');
+        return $this->morphMany('App\Models\Image', 'imageable');
     }
 
 }

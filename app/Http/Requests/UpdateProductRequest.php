@@ -31,6 +31,7 @@ class UpdateProductRequest extends FormRequest
             'price' => 'required',
             'quantity' => 'required',
             'category_id' => 'required',
+            'images.*' => 'max:1000'
         ];
     }
 }
