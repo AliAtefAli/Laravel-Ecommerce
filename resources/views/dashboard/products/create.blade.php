@@ -64,7 +64,7 @@
                                         <div class="form-group row">
                                             <label class="col-xl-3 col-sm-4">Description in {{ $language }} :</label>
                                             <div class="col-xl-8 col-sm-7 pl-0 description-sm">
-                                                    <textarea id="editor1" name="{{$key}}[description]" cols="10"
+                                                    <textarea id="editor" class="editor-{{$key}}" name="{{$key}}[description]" cols="10"
                                                               rows="4"></textarea>
                                             </div>
                                         </div>
@@ -73,7 +73,7 @@
                                     <div class="form-group mb-3 row">
                                         <label for="validationCustom02" class="col-xl-3 col-sm-4 mb-0">Price
                                             :</label>
-                                        <input class="form-control col-xl-8 col-sm-7" name="price"
+                                        <input class="form-control col-xl-8 col-sm-7"
                                                id="validationCustom02" type="number" name="price">
                                         <div class="valid-feedback">Looks good!</div>
                                     </div>
@@ -142,7 +142,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- touchspin js-->
     <script src="{{ asset('assets/js/touchspin/vendors.min.js') }}></script>
     <script src="{{ asset('assets/js/touchspin/touchspin.js') }}></script>
@@ -152,34 +152,14 @@
     <script src="{{ asset('assets/js/dashboard/form-validation-custom.js') }}></script>
 
     <!-- ckeditor js-->
-    <script src="../assets/js/editor/ckeditor/ckeditor.js"></script>
-    <script src="../assets/js/editor/ckeditor/styles.js"></script>
-    <script src="../assets/js/editor/ckeditor/adapters/jquery.js"></script>
-    <script src="../assets/js/editor/ckeditor/ckeditor.custom.js"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/ckeditor.js')}}"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/styles.js')}}"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/adapters/jquery.js')}}"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/ckeditor.custom.js')}}"></script>
 
     <!-- Zoom js-->
     <script src="../assets/js/jquery.elevatezoom.js"></script>
     <script src="../assets/js/zoom-scripts.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script !src="">
-        // Default ckeditor
-        CKEDITOR.replace('editor2', {
-            on: {
-                contentDom: function (evt) {
-                    // Allow custom context menu only with table elemnts.
-                    evt.editor.editable().on('contextmenu', function (contextEvent) {
-                        var path = evt.editor.elementPath();
-
-                        if (!path.contains('table')) {
-                            contextEvent.cancel();
-                        }
-                    }, null, null, 5);
-                }
-            }
-        });
-        flatpickr('#production_date');
-        flatpickr('#expiration_date');
-
-    </script>
 @endsection
 
