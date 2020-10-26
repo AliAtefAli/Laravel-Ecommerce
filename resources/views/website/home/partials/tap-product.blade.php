@@ -73,10 +73,9 @@
                                                 <li class="bg-light2"></li>
                                             </ul>
                                             <div class="add-btn addCart">
-                                                <a href="{{ route('cart.add', ['product' => $product])}}" class="btn
-                                                btn-outline" >
+                                                <button data-id="{{$product->id}}" class="btn btn-outline add-to-cart">
                                                     <i class="ti-shopping-cart"></i> add to cart
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>

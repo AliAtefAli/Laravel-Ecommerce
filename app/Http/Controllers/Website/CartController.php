@@ -2,12 +2,9 @@
 
 namespace App\Http\Controllers\website;
 
+use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\User;
-use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -20,12 +17,10 @@ class CartController extends Controller
 
     public function add(Product $product)
     {
-        $cart = Cart::add($product->id, $product->name, 1, $product->price, 0, [], 10);
+        Cart::add($product->id, $product->name, 1, $product->price)
+            ->associate('App\Models\Product');
 
-        Cart::associate($cart->rowId, 'App\Models\Product');
-
-
-        return back();
+        return response()->json(['success' => trans('home.Item was added to your cart!'), 'quantity' => Cart::count()]);
     }
 
     public function destroy($row)

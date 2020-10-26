@@ -19,7 +19,7 @@ class CreateCouponsTable extends Migration
             $table->string('code')->unique();
             $table->integer('amount');
             $table->enum('discount_type', ['percent', 'fixed', 'free_shipping'])->default('percent');
-            $table->unsignedInteger('product_id');
+            $table->foreignId('product_id')->nullable();
             $table->enum('status', ['available', 'unavailable'])->default('available');
             $table->timestamp('start_date')->nullable();
             $table->timestamp('end_date')->nullable();

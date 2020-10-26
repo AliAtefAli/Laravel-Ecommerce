@@ -14,17 +14,11 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-
     protected $websiteNamespace = 'App\Http\Controllers';
 
-    protected $dashboardNamespace = 'App\Http\Controllers';
+    protected $dashboardNamespace = 'App\Http\Controllers\Dashboard';
 
-    /**
-     * The path to the "home" route for your application.
-     *
-     * @var string
-     */
-    public const HOME = '/';
+    protected $apiNamespace = 'App\Http\Controllers\Api';
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -45,11 +39,10 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function map()
     {
-        $this->mapApiRoutes();
 
         $this->mapWebRoutes();
 
-        //
+        $this->mapDashboardRoutes();
     }
 
     /**
@@ -65,11 +58,12 @@ class RouteServiceProvider extends ServiceProvider
             ->namespace($this->websiteNamespace)
             ->group(base_path('routes/web.php'));
     }
+
     protected function mapDashboardRoutes()
     {
-        Route::middleware('web')
-
-            ->namespace($this->websiteNamespace)
+        Route::prefix("dashboard")
+            ->middleware(["web", "auth", "localize", 'admin'])
+            ->namespace($this->dashboardNamespace)
             ->group(base_path('routes/dashboard.php'));
     }
 
@@ -83,8 +77,8 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapApiRoutes()
     {
         Route::prefix('api')
-            ->middleware('api')
-            ->namespace($this->namespace)
+            ->middleware(['localizeApi'])
+            ->namespace($this->apiNamespace)
             ->group(base_path('routes/api.php'));
     }
 }
