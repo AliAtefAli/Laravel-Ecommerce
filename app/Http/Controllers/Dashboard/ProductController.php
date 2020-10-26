@@ -56,7 +56,7 @@ class ProductController extends Controller
         }
 
 
-        return redirect()->route('product.index');
+        return redirect()->route('dashboard.home');
     }
 
     /**
@@ -126,16 +126,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $old_images = Image::where('imageable_id', $product->id)->get();
-        // Delete from the asset
-        foreach ($old_images as $old_image) {
-            if (file_exists(public_path('assets/images/products/' . $old_image->path))) {
-                unlink(public_path('assets/images/products/' . $old_image->path));
-            }
-            // Delete from database
-            $old_image->delete();
-        }
         $product->delete();
+
         return back();
     }
 }

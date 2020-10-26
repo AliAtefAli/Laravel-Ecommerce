@@ -128,7 +128,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>

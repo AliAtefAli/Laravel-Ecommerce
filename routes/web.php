@@ -21,10 +21,9 @@ Route::group(['namespace' => 'Website', 'middleware' => 'localize'], function ()
 Auth::routes();
 
 // Dashboard
-
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => ['auth', 'localize']], function () {
+Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' => ['auth', 'localize', 'admin']], function () {
 
     Route::get('/', 'HomeController@index')->name('dashboard.home');
 
@@ -39,6 +38,10 @@ Route::group(['namespace' => 'Dashboard', 'prefix' => 'dashboard', 'middleware' 
     Route::get('setting', 'SettingController@show')->name('setting.show');
 
     Route::put('setting', 'SettingController@update')->name('setting.update');
+
+    Route::get('trash', 'TrashController@index')->name('trash.index');
+    Route::get('trash/{id}/restore/{type}', 'TrashController@restore')->name('trash.restore');
+    Route::get('trash/{id}/destroy/{type}', 'TrashController@destroy')->name('trash.destroy');
 });
 
 // Website

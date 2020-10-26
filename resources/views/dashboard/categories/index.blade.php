@@ -85,10 +85,10 @@
                                                        class="jsgrid-button jsgrid-edit-button"
                                                        type="button"></a>
                                                     <a class="jsgrid-button jsgrid-delete-button" data-toggle="modal"
-                                                       data-original-title="Delete" data-target="#deleteSubCategory"
+                                                       data-original-title="Delete" data-target="#deleteSubCategory-{{$category->id}}"
                                                        type="button"></a>
 
-                                                    <div class="modal fade" id="deleteSubCategory"
+                                                    <div class="modal fade" id="deleteSubCategory-{{$category->id}}"
                                                          tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                                                          aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
@@ -108,7 +108,7 @@
                                                                         @csrf
                                                                         @method('DELETE')
                                                                         <div class="form">
-                                                                            Delete this Category ?
+                                                                            Delete <span class="text-primary">'{{ $category->name }}'</span> Category ?
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <input class="btn btn-primary"
@@ -144,7 +144,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- Jsgrid js-->
     <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
     <script src="{{ asset('assets/js/jsgrid/griddata-transactions.js') }}"></script>

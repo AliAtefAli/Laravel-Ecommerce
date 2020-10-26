@@ -74,7 +74,7 @@
                                     <td>Paypal</td>
                                     <td><span class="badge badge-success">Delivered</span></td>
                                     <td>{{ $order->created_at->diffForHumans() }}</td>
-                                    <td>$54671</td>
+                                    <td>${{ $order->billing_total }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
@@ -89,7 +89,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- Datatable js-->
     <script src="{{ asset('assets/js/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('assets/js/datatables/custom-basic.js') }}"></script>

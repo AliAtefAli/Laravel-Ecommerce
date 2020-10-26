@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.master')
 
 @section('content')
-    
+
         <!-- Container-fluid starts-->
         <div class="container-fluid">
             <div class="page-header">
@@ -1015,7 +1015,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- Jsgrid js-->
     <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
     <script src="{{ asset('assets/js/jsgrid/griddata-transactions.js') }}"></script>

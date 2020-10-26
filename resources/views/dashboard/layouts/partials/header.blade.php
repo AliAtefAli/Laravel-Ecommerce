@@ -84,7 +84,13 @@
                         <li><a href="#"><i data-feather="mail"></i>Inbox</a></li>
                         <li><a href="#"><i data-feather="lock"></i>Lock Screen</a></li>
                         <li><a href="#"><i data-feather="settings"></i>Settings</a></li>
-                        <li><a href="#"><i data-feather="log-out"></i>Logout</a></li>
+                        <li><a onclick="event.preventDefault(); document.getElementById('logout-form').submit()"><i
+                                    data-feather="log-out"></i>{{trans('auth.logout')}} </a>
+                        </li>
+                        <form method="post" action="{{ route("logout") }}"
+                              id="logout-form">
+                            @csrf
+                        </form>
                     </ul>
                 </li>
             </ul>

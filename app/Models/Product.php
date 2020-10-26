@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 use Astrotomic\Translatable\Translatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Product extends Model implements TranslatableContract
 {
     use Translatable;
+    use SoftDeletes;
+
     protected $table = 'Products';
     public $translatedAttributes = ['name', 'description'];
 
@@ -31,7 +34,6 @@ class Product extends Model implements TranslatableContract
 
     public function images()
     {
-//        return $this->hasMany('App\Models\ProductImages');
         return $this->morphMany('App\Models\Image', 'imageable');
     }
 

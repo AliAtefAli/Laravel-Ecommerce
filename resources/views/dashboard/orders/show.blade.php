@@ -3,6 +3,9 @@
 @section('page-css')
     <!-- Datatables css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/datatables.css') }}">
+
+    <link rel="stylesheet" href="{{asset('assets/css/pickadate/classic.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/css/pickadate/classic.date.css')}}">
 @endsection
 
 @section('content')
@@ -118,7 +121,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <script src="{{asset('assets/js/vendor/picker.js')}}"></script>
     <script src="{{asset('assets/js/vendor/picker.date.js')}}"></script>
 

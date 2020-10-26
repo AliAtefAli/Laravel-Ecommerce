@@ -25,16 +25,6 @@ class CheckoutController extends Controller
     {
 
         return view('website.cart.checkout');
-//        $user = auth()->user();
-//        $carts = Order::where('user_id', $user->id)->get();
-//
-//        $total = 0;
-//        foreach ($carts as $cart){
-//            dd($cart->products);
-//            $total += $cart->products->first()->price;
-//        }
-
-//        return view('website.cart.index', compact('carts', 'total'));
 
     }
 
@@ -76,12 +66,24 @@ class CheckoutController extends Controller
         }
 
         foreach (Cart::content() as $cart) {
+            if ($cart->qty > Product::find($cart->id)->quantity) {
+                return back()->with('error', 'Please check the Quantity');
+            } else {
+                continue;
+            }
+        }
+
+        foreach (Cart::content() as $cart) {
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'billing_phone' => $request->phone,
                 'billing_address' => $request->address,
+                'billing_total' => $cart->total,
                 'product_id' => $cart->id,
             ]);
+            $product = Product::find($cart->id);
+            $product->quantity -= $cart->qty;
+            $product->save();
 
             $admin = User::where('role', 'admin')->first();
             $admin->notify(new NewOrderNotification($order));
