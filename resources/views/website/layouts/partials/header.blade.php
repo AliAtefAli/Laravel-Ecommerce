@@ -1,4 +1,3 @@
-
 <!-- header start -->
 <header>
     <div class="mobile-fix-option"></div>
@@ -17,18 +16,20 @@
                     <ul class="header-dropdown">
                         <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
                         </li>
-                        <li class="onhover-dropdown mobile-account"> <i class="fa fa-user" aria-hidden="true"></i>
+                        <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
                             My Account
                             <ul class="onhover-show-div">
-                                <li><a href="#" data-lng="en">Login</a></li>
-                                <li><a data-lng="en"
-                                       onclick="event.preventDefault(); document.getElementById('logout-form').submit()">{{trans('auth.logout')}} </a>
-                                </li>
-                                <form method="post" action="{{ route("logout") }}"
-                                      id="logout-form">
-                                    @csrf
-                                </form>
-
+                                @if(!auth()->user())
+                                    <li><a href="{{ route('login') }}" data-lng="en">Login</a></li>
+                                @else
+                                    <li><a data-lng="en"
+                                           onclick="event.preventDefault(); document.getElementById('logout-form').submit()">{{trans('auth.logout')}} </a>
+                                    </li>
+                                    <form method="post" action="{{ route("logout") }}"
+                                          id="logout-form">
+                                        @csrf
+                                    </form>
+                                @endif
                             </ul>
                         </li>
                     </ul>

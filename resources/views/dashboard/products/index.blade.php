@@ -29,13 +29,6 @@
     </div>
     <!-- Container-fluid Ends-->
 
-    @foreach($products as $product)
-        {{--        <div class="alert">{{ $product->name }}</div>--}}
-        @foreach($product->images() as $image)
-            @dd($image)
-            <div class="alert">{{ $image->path }}</div>
-        @endforeach
-    @endforeach
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="row">
@@ -43,14 +36,14 @@
                 <div class="card">
                     <div class="card-header">
                         <h5>Products</h5>
-                    </div>
-                    <div class="card-body">
                         <div class="btn-popup pull-right">
                             <div class="btn-popup pull-right">
                                 <a href="{{ route('products.create') }}" class="btn btn-primary">Add
                                     Product</a>
                             </div>
                         </div>
+                    </div>
+                    <div class="card-body">
                         <div class="table-responsive">
                             <div id="basicScenario" class="product-physical jsgrid"
                                  style="position: relative; height: auto; width: 100%;">
@@ -94,11 +87,45 @@
                                                     <a href="{{ route('products.edit', $product) }}"><input class="jsgrid-button
                                                     jsgrid-edit-button" type="button" title="Edit"></a>
 
-                                                    <form action="{{ route('products.destroy', $product) }}" method="POST">
-                                                        @csrf
-                                                        @method('delete')
-                                                        <button>Delete</button>
-                                                    </form>
+                                                    <a class="jsgrid-button jsgrid-delete-button" data-toggle="modal"
+                                                       data-original-title="Delete" data-target="#deleteSubCategory-{{$product->id}}"
+                                                       type="button"></a>
+
+                                                    <div class="modal fade" id="deleteSubCategory-{{$product->id}}"
+                                                         tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                                         aria-hidden="true">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title f-w-600 text-center"
+                                                                        id="exampleModalLabel">Delete Category</h5>
+                                                                    <button class="close" type="button"
+                                                                            data-dismiss="modal" aria-label="Close">
+                                                                        <span aria-hidden="true">×</span></button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form class="needs-validation"
+                                                                          action="{{route('products.destroy',
+                                                                                   $product) }}"
+                                                                          method="POST">
+                                                                        @csrf
+                                                                        @method('DELETE')
+                                                                        <div class="form">
+                                                                            Delete <span class="text-primary">'{{ $product->name }}'</span> Product ?
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <input class="btn btn-primary"
+                                                                                   type="submit" value="Delete">
+                                                                            <button class="btn btn-secondary"
+                                                                                    type="button" data-dismiss="modal">
+                                                                                Close
+                                                                            </button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -120,7 +147,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- Jsgrid js-->
     <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
     <script src="{{ asset('assets/js/jsgrid/griddata-transactions.js') }}"></script>

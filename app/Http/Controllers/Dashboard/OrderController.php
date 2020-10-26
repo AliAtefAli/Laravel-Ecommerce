@@ -48,7 +48,7 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        return view('dashboard.orders.show', compact('order'));
+        return view('dashboard.orders.show-2', compact('order'));
 
 
     }

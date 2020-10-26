@@ -107,7 +107,7 @@
 @endsection
 
 
-@section('js')
+@section('script')
     <!-- Jsgrid js-->
     <script src="{{ asset('assets/js/jsgrid/jsgrid.min.js') }}"></script>
     <script src="{{ asset('assets/js/jsgrid/griddata-transactions.js') }}"></script>
