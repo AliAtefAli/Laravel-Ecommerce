@@ -1,4 +1,3 @@
-
 @extends('dashboard.layouts.master')
 
 @section('page-css')
@@ -32,37 +31,39 @@
         </div>
     </div>
     <!-- Container-fluid Ends-->
-
     <!-- Container-fluid starts-->
     <div class="container-fluid">
         <div class="card">
             <div class="row product-page-main card-body">
                 <div class="col-xl-4">
                     <div class="product-slider owl-carousel owl-theme" id="sync1">
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/1.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/1.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
+                        @foreach($product->images as $image)
+                            <div>
+                                <div class="item"><img
+                                        src="{{ asset('assets/images/products/' . $image->path )}}" width="100"
+                                        alt="" class="blur-up lazyloaded">
+                                </div>
+                            </div>
+                        @endforeach
+
                     </div>
                     <div class="owl-carousel owl-theme" id="sync2">
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/1.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/1.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/27.jpg" alt="" class="blur-up lazyloaded"></div>
-                        <div class="item"><img src="../assets/images/pro3/2.jpg" alt="" class="blur-up lazyloaded"></div>
+                        @foreach($product->images as $image)
+                            <div>
+                                <div class="item"><img
+                                        src="{{ asset('assets/images/products/' . $image->path )}}" width="100"
+                                        alt=""
+                                        class="blur-up lazyloaded">
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
                 <div class="col-xl-8">
                     <div class="product-page-details product-right mb-0">
                         <h2>WOMEN PINK SHIRT</h2>
-                        <select id="u-rating-fontawesome-o" name="rating" data-current-rating="5" autocomplete="off">
+                        <select id="u-rating-fontawesome-o" name="rating" data-current-rating="5"
+                                autocomplete="off">
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -71,36 +72,13 @@
                         </select>
                         <hr>
                         <h6 class="product-title">product details</h6>
-                        <p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem,</p>
+                        {!! $product->description !!}
                         <div class="product-price digits mt-2">
-                            <h3>$26.00 <del>$350.00</del></h3>
+                            <h3>${{ $product->price }}
+                                {{--                                <del>$350.00</del>--}}
+                            </h3>
                         </div>
-                        <ul class="color-variant">
-                            <li class="bg-light0"></li>
-                            <li class="bg-light1"></li>
-                            <li class="bg-light2"></li>
-                        </ul>
-                        <hr>
-                        <h6 class="product-title size-text">select size <span class="pull-right"><a href="" data-toggle="modal" data-target="#sizemodal">size chart</a></span></h6>
-                        <div class="modal fade" id="sizemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Sheer Straight Kurta</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    </div>
-                                    <div class="modal-body"><img src="../assets/images/size-chart.jpg" alt="" class="img-fluid blur-up lazyloaded"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="size-box">
-                            <ul>
-                                <li class="active"><a href="#">s</a></li>
-                                <li><a href="#">m</a></li>
-                                <li><a href="#">l</a></li>
-                                <li><a href="#">xl</a></li>
-                            </ul>
-                        </div>
+
                         <div class="add-product-form">
                             <h6 class="product-title">quantity</h6>
                             <fieldset class="qty-box mt-2 ml-0">
@@ -109,15 +87,50 @@
                                 </div>
                             </fieldset>
                         </div>
-                        <hr>
-                        <h6 class="product-title">Time Reminder</h6>
-                        <div class="timer">
-                            <p id="demo"><span>25 <span class="padding-l">:</span> <span class="timer-cal">Days</span> </span><span>22 <span class="padding-l">:</span> <span class="timer-cal">Hrs</span> </span><span>13 <span class="padding-l">:</span> <span class="timer-cal">Min</span> </span><span>57 <span class="timer-cal">Sec</span></span>
-                            </p>
-                        </div>
                         <div class="m-t-15">
-                            <button class="btn btn-primary m-r-10" type="button">Add To Cart</button>
-                            <button class="btn btn-secondary" type="button">Buy Now</button>
+
+                            <a class="btn btn-success m-r-10" href="{{ route('products.edit', $product) }}">Edit</a>
+                            <a data-toggle="modal" class="btn btn-primary m-r-10"
+                               data-original-title="Delete" data-target="#deleteSubCategory-{{$product->id}}"
+                               type="button">Delete</a>
+
+                            <div class="modal fade" id="deleteSubCategory-{{$product->id}}"
+                                 tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                                 aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title f-w-600 text-center"
+                                                id="exampleModalLabel">Delete Category</h5>
+                                            <button class="close" type="button"
+                                                    data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">×</span></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form class="needs-validation"
+                                                  action="{{route('products.destroy',
+                                                                                   $product) }}"
+                                                  method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div class="form">
+                                                    Delete <span class="text-primary">'{{ $product->name }}'</span>
+                                                    Product ?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input class="btn btn-primary"
+                                                           type="submit" value="Delete">
+                                                    <button class="btn btn-secondary"
+                                                            type="button" data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -144,5 +157,5 @@
     <script src="{{ asset('assets/js/dashboard/product-carousel.js') }}"></script>
 
     <!-- lazyload js-->
-    <script src="{{ asset('assets/js/lazysizes.min.js"></script>
+    <script src="{{ asset('assets/js/lazysizes.min.js') }}"></script>
 @endsection

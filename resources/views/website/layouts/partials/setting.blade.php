@@ -696,12 +696,10 @@
                    target="_blank" class="btn btn-block purchase_btn"><i class="fa fa-shopping-cart"
                                                                          aria-hidden="true"></i> purchase Multikart now!</a>
                 <a href="https://themeforest.net/item/multikart-responsive-angular-ecommerce-template/22905358?s_rank=3"
-                   target="_blank" class="btn btn-block purchase_btn"><img src="{{ asset('assets/images/icon/angular
-                   .png') }}"
+                   target="_blank" class="btn btn-block purchase_btn"><img src="{{ asset('assets/images/icon/angular.png') }}"
                                                                            alt="" class="img-fluid"> Multikart Angular</a>
                 <a href="https://themeforest.net/item/multikart-responsive-react-ecommerce-template/23067773?s_rank=2"
-                   target="_blank" class="btn btn-block purchase_btn"><img src="{{ asset('assets/images/icon/react
-                   .png') }}"
+                   target="_blank" class="btn btn-block purchase_btn"><img src="{{ asset('assets/images/icon/react.png') }}"
                                                                            alt="" class="img-fluid"> Multikart React</a>
                 <a href="https://themeforest.net/item/multikart-multipurpose-shopify-sections-theme/23093831?s_rank=1"
                    target="_blank" class="btn btn-block purchase_btn"><img src="{{ asset('assets/images/icon/shopify.png') }}"

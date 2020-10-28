@@ -20,65 +20,66 @@
                             <div class="no-slider row">
 
                                 @foreach($products as $product)
-
-                                    <div class="product-box product-wrap">
-                                        <div class="img-block">
-
-                                            @if(isset($product->coupon->amount))
-                                                <div class="lable-wrapper">{{--<span class="lable1">new</span>--}} <span
-                                                        class="lable2">{{ $product->coupon->amount }}%
-                                        off</span></div>
-                                            @endif
-                                            <div class="front">
-                                                <a href="{{ route('product.show', $product) }}">
-                                                    <img
-                                                        src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
-                                                        class="img-fluid  bg-img" alt=""></a>
+                                        <div class="product-box product-wrap">
+                                            <div class="img-block">
+                                                @if(isset($product->coupon->amount))
+                                                    <div class="lable-wrapper">{{--<span class="lable1">new</span>--}}
+                                                        <span
+                                                            class="lable2">{{ $product->coupon->amount }}%off</span></div>
+                                                @endif
+                                                <div class="front">
+                                                    <a title="Show Details" href="{{ route('product.show', $product) }}">
+                                                        <img
+                                                            src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
+                                                            class="img-fluid  bg-img" alt=""></a>
+                                                </div>
+                                                <div class="back">
+                                                    <a href="{{ route('product.show', $product) }}"><img
+                                                            src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
+                                                            class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                                </div>
+                                                <div class="cart-detail"><a href="#" title="Add to Wishlist"><i
+                                                            class="ti-heart" aria-hidden="true"></i></a> <a href="#"
+                                                                                                            data-toggle="modal"
+                                                                                                            data-target="#quick-view"
+                                                                                                            title="Quick View"><i
+                                                            class="ti-search"
+                                                            aria-hidden="true"></i></a> <a href="compare.html"
+                                                                                           title="Compare"><i
+                                                            class="ti-reload" aria-hidden="true"></i></a>
+                                                </div>
                                             </div>
-                                            <div class="back">
-                                                <a href="{{ route('product.show', $product) }}"><img
-                                                        src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
-                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            <div class="product-info">
+                                                <div class="rating">
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i> <i
+                                                        class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                                <a href="product-page(no-sidebar).html">
+                                                    <h6>{{ $product->name }}</h6>
+                                                </a>
+                                                @if(isset($product->coupon->amount))
+                                                    <h4>
+                                                        ${{ $product->price * ( (100 - $product->coupon->amount ) / 100 ) }}
+                                                        <del>${{ $product->price }}</del>
+                                                    </h4>
+                                                @else
+                                                    <h4>${{ $product->price}}</h4>
+                                                @endif
+                                                <ul class="color-variant">
+                                                    <li class="bg-light0"></li>
+                                                    <li class="bg-light1"></li>
+                                                    <li class="bg-light2"></li>
+                                                </ul>
+                                                <div class="add-btn addCart">
+                                                    <button data-id="{{$product->id}}"
+                                                            class="btn btn-solid add-to-cart">
+                                                        <i class="ti-shopping-cart"></i> add to cart
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <div class="cart-detail"><a href="#" title="Add to
-                                            Wishlist"><i
-                                                        class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                                                        data-toggle="modal"
-                                                                                                        data-target="#quick-view"
-                                                                                                        title="Quick View"><i
-                                                        class="ti-search"
-                                                        aria-hidden="true"></i></a> <a href="compare.html"
-                                                                                       title="Compare"><i
-                                                        class="ti-reload" aria-hidden="true"></i></a></div>
                                         </div>
-                                        <div class="product-info">
-                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                    class="fa fa-star"></i>
-                                            </div>
-                                            <a href="product-page(no-sidebar).html">
-                                                <h6>{{ $product->name }}</h6>
-                                            </a>
-                                            @if(isset($product->coupon->amount))
-                                                <h4>${{ $product->price * ( (100 - $product->coupon->amount ) / 100 ) }}
-                                                    <del>${{ $product->price }}</del>
-                                                </h4>
-                                            @else
-                                                <h4>${{ $product->price}}</h4>
-                                            @endif
-
-                                            <ul class="color-variant">
-                                                <li class="bg-light0"></li>
-                                                <li class="bg-light1"></li>
-                                                <li class="bg-light2"></li>
-                                            </ul>
-                                            <div class="add-btn addCart">
-                                                <button data-id="{{$product->id}}" class="btn btn-outline add-to-cart">
-                                                    <i class="ti-shopping-cart"></i> add to cart
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 @endforeach
 
                             </div>
@@ -91,51 +92,64 @@
                                 <div class="no-slider row">
                                     @foreach($products as $product)
                                         @if($product->category_id == $category->id)
-                                            <div class="product-box">
-                                                <div class="img-wrapper">
-                                                    <div class="lable-block"><span class="lable3">new</span> <span
-                                                            class="lable4">on sale</span></div>
+                                            <div class="product-box product-wrap">
+                                                <div class="img-block">
+                                                    @if(isset($product->coupon->amount))
+                                                        <div class="lable-wrapper">{{--<span class="lable1">new</span>--}}
+                                                            <span
+                                                                class="lable2">{{ $product->coupon->amount }}%off</span></div>
+                                                    @endif
                                                     <div class="front">
-                                                        <a href="product-page(no-sidebar).html"><img
-                                                                src=" {{ asset("assets/images/products/" . optional
-                                                                ($product->images->first())->path) }}"
-                                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                                        <a title="Show Details" href="{{ route('product.show', $product) }}">
+                                                            <img
+                                                                src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
+                                                                class="img-fluid  bg-img" alt=""></a>
                                                     </div>
                                                     <div class="back">
-                                                        <a href="product-page(no-sidebar).html"><img
-                                                                src=" {{ asset("assets/images/products/" . optional
-                                                                ($product->images->first())->path) }}"
+                                                        <a href="{{ route('product.show', $product) }}"><img
+                                                                src="{{ asset("assets/images/products/" . optional($product->images->first())->path) }}"
                                                                 class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                                     </div>
-                                                    <div class="cart-info cart-wrap">
-                                                        <button data-toggle="modal" data-target="#addtocart"
-                                                                title="Add to cart"><i class="ti-shopping-cart"></i>
-                                                        </button>
-                                                        <a
-                                                            href="javascript:void(0)" title="Add to Wishlist"><i
+                                                    <div class="cart-detail"><a href="#" title="Add to Wishlist"><i
                                                                 class="ti-heart" aria-hidden="true"></i></a> <a href="#"
                                                                                                                 data-toggle="modal"
                                                                                                                 data-target="#quick-view"
                                                                                                                 title="Quick View"><i
-                                                                class="ti-search" aria-hidden="true"></i></a> <a
-                                                            href="compare.html" title="Compare"><i class="ti-reload"
-                                                                                                   aria-hidden="true"></i></a>
+                                                                class="ti-search"
+                                                                aria-hidden="true"></i></a> <a href="compare.html"
+                                                                                               title="Compare"><i
+                                                                class="ti-reload" aria-hidden="true"></i></a>
                                                     </div>
                                                 </div>
-                                                <div class="product-detail">
-                                                    <div class="rating"><i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                            class="fa fa-star"></i></div>
+                                                <div class="product-info">
+                                                    <div class="rating">
+                                                        <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i> <i
+                                                            class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                                        <i class="fa fa-star"></i>
+                                                    </div>
                                                     <a href="product-page(no-sidebar).html">
                                                         <h6>{{ $product->name }}</h6>
                                                     </a>
-                                                    <h4>${{ $product->price }}</h4>
+                                                    @if(isset($product->coupon->amount))
+                                                        <h4>
+                                                            ${{ $product->price * ( (100 - $product->coupon->amount ) / 100 ) }}
+                                                            <del>${{ $product->price }}</del>
+                                                        </h4>
+                                                    @else
+                                                        <h4>${{ $product->price}}</h4>
+                                                    @endif
                                                     <ul class="color-variant">
                                                         <li class="bg-light0"></li>
                                                         <li class="bg-light1"></li>
                                                         <li class="bg-light2"></li>
                                                     </ul>
+                                                    <div class="add-btn addCart">
+                                                        <button data-id="{{$product->id}}"
+                                                                class="btn btn-solid add-to-cart">
+                                                            <i class="ti-shopping-cart"></i> add to cart
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         @endif
@@ -143,53 +157,7 @@
                                 </div>
                             </div>
                         @endforeach
-                        <div id="tab-6" class="tab-content">
-                            <div class="no-slider row">
-                                <div class="product-box">
-                                    <div class="img-wrapper">
-                                        <div class="lable-block"><span class="lable3">new</span> <span
-                                                class="lable4">on sale</span></div>
-                                        <div class="front">
-                                            <a href="product-page(no-sidebar).html"><img
-                                                    src="../assets/images/pro3/33.jpg"
-                                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="back">
-                                            <a href="product-page(no-sidebar).html"><img
-                                                    src="../assets/images/pro3/34.jpg"
-                                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                        </div>
-                                        <div class="cart-info cart-wrap">
-                                            <button data-toggle="modal" data-target="#addtocart"
-                                                    title="Add to cart"><i class="ti-shopping-cart"></i></button>
-                                            <a
-                                                href="javascript:void(0)" title="Add to Wishlist"><i
-                                                    class="ti-heart" aria-hidden="true"></i></a> <a href="#"
-                                                                                                    data-toggle="modal"
-                                                                                                    data-target="#quick-view"
-                                                                                                    title="Quick View"><i
-                                                    class="ti-search" aria-hidden="true"></i></a> <a
-                                                href="compare.html" title="Compare"><i class="ti-reload"
-                                                                                       aria-hidden="true"></i></a></div>
-                                    </div>
-                                    <div class="product-detail">
-                                        <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                                class="fa fa-star"></i></div>
-                                        <a href="product-page(no-sidebar).html">
-                                            <h6>Slim Fit Cotton Shirt</h6>
-                                        </a>
-                                        <h4>$500.00</h4>
-                                        <ul class="color-variant">
-                                            <li class="bg-light0"></li>
-                                            <li class="bg-light1"></li>
-                                            <li class="bg-light2"></li>
-                                        </ul>
-                                    </div>
-                                </div>
 
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -200,7 +168,7 @@
 
 @push('js')
     <script>
-        $('.addCart').on('click', function() {
+        $('.addCart').on('click', function () {
 
             $.notify({
                 icon: 'fa fa-check',

@@ -65,9 +65,10 @@ class ProductController extends Controller
      * @param int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+
+        return view('dashboard.products.show', compact('product'));
     }
 
     /**
@@ -121,13 +122,14 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param Product $product
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Product $product)
     {
         $product->delete();
 
-        return back();
+        return redirect()->route('dashboard.home');
     }
 }

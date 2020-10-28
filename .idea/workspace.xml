@@ -1,22 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ea6bee58-8a73-4480-956d-1a8b8f284355" name="Default Changelist" comment="wip">
-      <change beforePath="$PROJECT_DIR$/.idea/Laravel_Ecommerce.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Laravel_Ecommerce.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ProductController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Kernel.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Kernel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Category.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Product.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Product.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/CheckoutController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_23_123011_create_coupons_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_23_123011_create_coupons_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/coupons/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/coupons/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/cart/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/cart/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/home/partials/tap-product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home/partials/tap-product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/footer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/header.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/setting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/setting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/top-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/top-menu.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -138,6 +158,9 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/paragonie/sodium_compat" />
       <path value="$PROJECT_DIR$/vendor/pusher/pusher-php-server" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php70" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
     </include_path>
   </component>
   <component name="ProjectId" id="1e4rrUIxSxxD473XUQXqKp1WljI" />
@@ -153,7 +176,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../kokpit" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/website/cart" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -164,16 +187,16 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\laragon\www\ecommerce\routes" />
-      <recent name="C:\xampp\htdocs\Laravel_Ecommerce\resources\views\dashboard\orders" />
-      <recent name="C:\xampp2\htdocs\Laravel_Ecommerce\resources\views\dashboard\orders" />
-      <recent name="C:\xampp2\htdocs\Laravel_Ecommerce\public\assets\js" />
-      <recent name="C:\xampp2\htdocs\Laravel_Ecommerce\resources\views\dashboard\setting" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\laragon\www\ecommerce\app\Http\Controllers\Website" />
       <recent name="C:\xampp\htdocs\Laravel_Ecommerce\app\Models" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Laravel_Ecommerce\resources\views\website\cart" />
+      <recent name="C:\xampp\htdocs\Laravel_Ecommerce\public\assets\js" />
+      <recent name="C:\laragon\www\ecommerce\routes" />
+      <recent name="C:\xampp\htdocs\Laravel_Ecommerce\resources\views\dashboard\orders" />
+      <recent name="C:\xampp2\htdocs\Laravel_Ecommerce\resources\views\dashboard\orders" />
     </key>
   </component>
   <component name="RunManager">
@@ -182,7 +205,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -209,11 +232,24 @@
       <workItem from="1603365566681" duration="4308000" />
       <workItem from="1603560866470" duration="2413000" />
       <workItem from="1603646037051" duration="26875000" />
+      <workItem from="1603867644404" duration="21295000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="186" key="#Notifications" timestamp="1602490721276">
@@ -236,10 +272,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1603738604119" />
-    <state x="92" y="92" width="1182" height="523" maximized="true" key="DiffContextDialog" timestamp="1603735585064">
+    <state x="92" y="92" width="1182" height="523" key="DiffContextDialog" timestamp="1603801651872">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="92" y="92" width="1182" height="523" maximized="true" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1603735585064" />
+    <state x="92" y="92" width="1182" height="523" key="DiffContextDialog/0.0.1366.728@0.0.1366.728" timestamp="1603801651872" />
     <state x="463" y="120" key="FileChooserDialogImpl" timestamp="1603736625775">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -264,9 +300,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602592846126" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603724552473">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603911022177">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603724552473" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603911022177" />
   </component>
 </project>

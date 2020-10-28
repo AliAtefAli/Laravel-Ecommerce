@@ -27,7 +27,9 @@ Route::group(['namespace' => 'Website', 'middleware' => 'localize'], function ()
 
     Route::post('cart/add/{product}', 'CartController@add')->name('cart.add');
 
-    Route::get('cart/destroy/{row}', 'CartController@destroy')->name('cart.destroy');
+    Route::patch('cart/destroy/{row}', 'CartController@destroy')->name('cart.destroy');
+
+    Route::put('cart/update/{row}', 'CartController@update')->name('cart.update');
 
     Route::resource('checkout', 'CheckoutController')->middleware('auth');
 

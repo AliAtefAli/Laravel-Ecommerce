@@ -28,30 +28,6 @@ class CheckoutController extends Controller
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create(Request $request)
-    {
-
-        $user = auth()->user();
-        $carts = Order::where('user_id', $user->id)->get();
-
-        foreach ($carts as $cart) {
-            $carts['quantity'] = $request[$cart->id . '_quantity'];
-        }
-        return view('website.cart.checkout', compact('carts'));
-
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreCheckoutRequest $request)
     {
         if (!isset(auth()->user()->address)) {
@@ -94,7 +70,7 @@ class CheckoutController extends Controller
             Cart::remove($cart->rowId);
         }
 
-        return redirect()->route('product.index');
+        return view('website.cart.order-success');
     }
 
     protected function make_event($order, $total)

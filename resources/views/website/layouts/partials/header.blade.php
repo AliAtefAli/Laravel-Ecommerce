@@ -17,7 +17,11 @@
                         <li class="mobile-wishlist"><a href="#"><i class="fa fa-heart" aria-hidden="true"></i></a>
                         </li>
                         <li class="onhover-dropdown mobile-account"><i class="fa fa-user" aria-hidden="true"></i>
-                            My Account
+                            @if(auth()->user())
+                                {{ auth()->user()->name }}
+                            @else
+                                My Account
+                            @endif
                             <ul class="onhover-show-div">
                                 @if(!auth()->user())
                                     <li><a href="{{ route('login') }}" data-lng="en">Login</a></li>
