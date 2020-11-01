@@ -19,25 +19,25 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea6bee58-8a73-4480-956d-1a8b8f284355" name="Default Changelist" comment="wip">
+    <list default="true" id="ea6bee58-8a73-4480-956d-1a8b8f284355" name="Default Changelist" comment="complete checkout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ProductController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Dashboard/ProductController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/CartController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/CartController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Website/CheckoutController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Website/CheckoutController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Admin.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Authenticate.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/dashboard/products/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dashboard/products/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/cart/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/cart/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/home/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/home/partials/tap-product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/home/partials/tap-product.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/setting.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/setting.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/UserFactory.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/factories/UserFactory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_23_143033_create_product_translations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_23_143033_create_product_translations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_23_143814_create_category_translations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_06_23_143814_create_category_translations_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_06_24_152506_create_product_images_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/45f5fadb-6cbe-42e3-9664-77e0d6a3e602.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/4fa98f4d-ad80-4e81-971d-317bab9ca00d.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/6a542019-f564-4e7b-ac20-39aeca42dbf4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/74739f85-f8ec-40aa-b407-dd116c5a4a16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/99fb7f8f-f179-4404-91dd-85a7137f93ed.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/bdcb6c14-04f0-4c9d-bdf7-5703acbfbc4e.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/bf02a6ee-a53d-4050-a883-b816f319a7fa.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/images/products/e8f9fe91-ce6a-43c4-a4fe-d99433eeedf9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/master.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/website/layouts/partials/top-menu.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/layouts/partials/top-menu.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/website/products/one-product.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/website/products/one-product.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,8 +232,16 @@
       <workItem from="1603365566681" duration="4308000" />
       <workItem from="1603560866470" duration="2413000" />
       <workItem from="1603646037051" duration="26875000" />
-      <workItem from="1603867644404" duration="21295000" />
+      <workItem from="1603867644404" duration="30676000" />
+      <workItem from="1604225647844" duration="867000" />
     </task>
+    <task id="LOCAL؜٠٠٠٠١" summary="complete checkout">
+      <created>1603916840000</created>
+      <option name="number" value="LOCAL؜٠٠٠٠١" />
+      <option name="presentableId" value="LOCAL؜٠٠٠٠١" />
+      <updated>1603916840000</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +258,10 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="complete checkout" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete checkout" />
   </component>
   <component name="WindowStateProjectService">
     <state x="428" y="186" key="#Notifications" timestamp="1602490721276">
@@ -284,6 +296,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="404" y="105" width="570" height="524" key="StructurePopup/0.0.1366.728@0.0.1366.728" timestamp="1602586969241" />
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2" timestamp="1603916844033">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="95" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603916844033" />
     <state x="371" y="190" key="com.intellij.ide.util.TipDialog" timestamp="1595248430903">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -300,9 +316,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1602592846126" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603911022177">
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1603981751175">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603911022177" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1603981751175" />
   </component>
 </project>
