@@ -19,7 +19,6 @@ class CreateOrdersTable extends Migration
             $table->string('billing_phone');
             $table->string('billing_address');
             $table->double('billing_total');
-            $table->foreignId('product_id')->constrained();
             $table->enum('payment_method', ['payment', 'on_delivery'])->default('on_delivery');
             $table->enum('payment_status', ['failed', 'done'])->default('done');
             $table->enum('order_status', ['delivered', 'processing', 'cancelled'])->default('processing');

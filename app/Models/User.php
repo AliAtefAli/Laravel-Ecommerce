@@ -41,4 +41,19 @@ class User extends Authenticatable
     {
         return $this->hasMany('App/Models/Cart');
     }
+
+    public static function updateUser($request)
+    {
+        if (! isset(auth()->user()->address)) {
+            $user = User::find(auth()->user()->id);
+            $user->address = $request->address;
+            $user->save();
+        }
+        if (! isset(auth()->user()->phone)) {
+            $user = User::find(auth()->user()->id);
+            $user->phone = $request->phone;
+            $user->save();
+        }
+    }
+
 }

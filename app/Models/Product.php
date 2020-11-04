@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Astrotomic\Translatable\Translatable;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Astrotomic\Translatable\Contracts\Translatable as TranslatableContract;
 
@@ -34,6 +35,17 @@ class Product extends Model implements TranslatableContract
     public function images()
     {
         return $this->morphMany('App\Models\Image', 'imageable');
+    }
+
+    public static function checkProductQuantity()
+    {
+        foreach (Cart::content() as $cart) {
+            if ($cart->qty > Product::find($cart->id)->quantity) {
+                return back()->with('error', 'Please check the Quantity');
+            } else {
+                continue;
+            }
+        }
     }
 
 }

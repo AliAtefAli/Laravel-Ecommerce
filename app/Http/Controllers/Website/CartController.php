@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\website;
+namespace App\Http\Controllers\Website;
 
 use App\Models\Product;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Gloudemans\Shoppingcart\Facades\Cart;
-use Illuminate\Http\Request;
 
 class CartController extends Controller
 {
